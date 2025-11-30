@@ -1,4 +1,4 @@
-.container-1{
+.map-area{
     background: linear-gradient(
         62deg, 
         #F2BED1,
@@ -16,7 +16,7 @@
     box-sizing: border-box;
     aspect-ratio: 16 / 9;
 }
-.container-2{
+.sidebar{
     background: linear-gradient(
     62deg, 
     #540863 0%,
@@ -24,28 +24,20 @@
     );
 }
 
-.box-1{
-    /*background: linear-gradient(62deg, #F2BED1 0%, #F9F5F6 100%);*/
-    /*background-color: #476EAE;*/
+.search-location{
     padding: 10px 0px 10px 10px;
     object-fit: contain;
 }
 
-.box-2{
-    /*background: linear-gradient(62deg, #F2BED1 0%, #F9F5F6 100%);*/
-    /*background-color: #48B3AF;*/
+.search-destination{
     padding: 10px 0px 10px 10px;
 }
 
-.box-3{
-    /*background: linear-gradient(62deg, #F2BED1 0%, #F9F5F6 100%);
-    /*background-color: #A7E399;*/
+.distance{
     padding: 10px 0px 10px 10px;
 }
 
-.box-4{
-    /*background: linear-gradient(62deg, #F2BED1 0%, #F9F5F6 100%);*/
-    /*background-color: #F6FF99;*/
+.routes{
     grid-template-rows: 100vh;
     padding: 10px 0px 10px 10px;
 }
@@ -60,4 +52,16 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: contain;
+}
+
+.suggestions{
+list-style: none;
+}
+
+.suggestions li{
+    cursor: pointer;
+}
+ 
+.suggestions li:hover{
+    background:#F2BED1;
 }

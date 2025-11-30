@@ -7,42 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container-1">
+    <div class="map-area">
         <div class="map">
             <img id="displayImage">
         </div>
-        <div class="container-2">
+        <div class="sidebar">
             
-            <div class="box-1">
+            <div class="search-location">
                 <label for="Location">Location</label><br>
-                <select id="Location-select" name="selected-location">
-                    <option value="">Choose Location</option>
-                    <option value="chynnaAdorable">1</option>
-                    <option value="chynnaMatalino">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <input type="file" id="fileInput" accept="image/jpeg, image/jpg" style="display:none">
+                <input type="text" id="searchLocation" placeholder="Search location here...">
+                <div id="suggestionsLocation" class="suggestions"></div>
                 </div>
                 
-            <div class="box-2">
+            <div class="search-destination">
                 <label for="Destination">Destination</label><br>
-                <select id="Destination" name="selected-destination">
-                    <option value="">Choose Destination</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                    <option value="c">c</option>
-                    <option value="d">d</option>
-                    <option value="e">e</option>
-                </select>
+                <input type="text" id="searchDestination" placeholder="Search destination here...">
+                <div id="suggestionsDestination" class="suggestions"></div>
             </div>
 
-            <div class="box-3">
+            <div class="distance">
                 <p>XX km</p>
             </div>
 
-            <div class="box-4">Other routes</div>
+            <div class="routes">Other routes</div>
         </div>
     </div>
     <script src="script.js"></script>
