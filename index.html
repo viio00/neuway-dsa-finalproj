@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="map-area">
+        <div class="map">
+            <img id="displayImage">
+        </div>
+        <div class="sidebar">
+            
+            <div class="search-location">
+                <label for="Location">Location</label><br>
+                <input type="text" id="searchLocation" placeholder="Search location here...">
+                <div id="suggestionsLocation" class="suggestions"></div>
+                </div>
+                
+            <div class="search-destination">
+                <label for="Destination">Destination</label><br>
+                <input type="text" id="searchDestination" placeholder="Search destination here...">
+                <div id="suggestionsDestination" class="suggestions"></div>
+            </div>
+
+            <div class="distance">
+                <p>XX km</p>
+            </div>
+
+            <div class="routes">Other routes</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
