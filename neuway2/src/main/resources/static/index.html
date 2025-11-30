@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dijkstra Demo</title>
+</head>
+<body>
+    <h1>Dijkstra Path Finder</h1>
+
+    <input type="text" id="start" placeholder="Start node">
+    <input type="text" id="destination" placeholder="Destination node">
+    <button onclick="computePath()">Find Path</button>
+
+    <pre id="result"></pre>
+
+    <script>
+        async function computePath() {
+            const start = document.getElementById('start').value;
+            const destination = document.getElementById('destination').value;
+
+            const response = await fetch('/dijkstra', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ start, destination })
+            });
+
+            const data = await response.json();
+            document.getElementById('result').textContent = 
+                `Path: ${data.path}\nTotal Distance: ${data.totalDistance} meters\nOperations: ${data.operations}`;
+        }
+    </script>
+</body>
+</html>
