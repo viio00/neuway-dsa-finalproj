@@ -9,7 +9,7 @@
 <body>
     <div class="map-area">
         <div class="map">
-            <img id="displayImage">
+            <img id="displayImage" style="display: no;">
         </div>
         <div class="sidebar">
             
@@ -24,12 +24,15 @@
                 <input type="text" id="searchDestination" placeholder="Search destination here...">
                 <div id="suggestionsDestination" class="suggestions"></div>
             </div>
-
-            <div class="distance">
-                <p>XX km</p>
+            <div class="findPath">
+                <button type="submit" id="findPath">Find Path</button>
             </div>
 
-            <div class="routes">Other routes</div>
+            <div class="distance">
+                <p id="distance">XX m</p>
+            </div>
+
+            <div class="routes" id="routes">Other routes</div>
         </div>
     </div>
     <script src="script.js"></script>
