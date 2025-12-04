@@ -1,67 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Pixelify Sans');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .map-area{
+    font-family: 'Pixelify Sans';
+    width: 933px;
+    height: 554px;
     background: linear-gradient(
         62deg, 
         #F2BED1,
         #F9F5F6, 
         #E49BA6
         );
-    background-color: #8CE4FF;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 746px 187px;
+    grid-template-rows: 60px auto;
     box-sizing: border-box;
-    aspect-ratio: 16 / 9;
+    grid-template-areas: "titlebar titlebar"
+                         "map sidebar";
 }
-.sidebar{
-    background: linear-gradient(
-    62deg, 
-    #540863 0%,
-    #E49BA6 100%
-    );
+
+#titlebar {
+    width: 933px;
+    height: 64px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: titlebar;
+    padding-right: 10px;
+}
+
+.title{
+    padding-left: 10px;
+}
+
+.btn img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#searchLocation{
+    font-family: 'Pixelify Sans';
+    width: 159px;
+    height: 26px;
 }
 
 .search-location{
-    padding: 10px 0px 10px 10px;
-    object-fit: contain;
+    font-family: 'Pixelify Sans';
+    padding-left: 12px;
+}
+
+#searchDestination{
+    font-family: 'Pixelify Sans';
+    width: 159px;
+    height: 26px;
 }
 
 .search-destination{
-    padding: 10px 0px 10px 10px;
+    font-family: 'Pixelify Sans';
+    padding-top: 21px;
+    padding-left: 12px;
+}
+
+.findPath{
+    padding-top: 21px;
+    padding-left: 12px;
 }
 
 .distance{
-    padding: 10px 0px 10px 10px;
+    padding-top: 21px;
+    padding-left: 12px;
+}
+
+#distance{
+    font-size: 40px;
 }
 
 .routes{
-    grid-template-rows: 100vh;
-    padding: 10px 0px 10px 10px;
+    display: grid;
+    padding-top: 21px;
+    padding-left: 12px;
 }
 
-.displayImage{
-    display: none;
-    
+.otherRoutes{
+    width: 159px;
+    height: 194px;
+    background: linear-gradient(
+        62deg, 
+        #F2BED1,
+        #F9F5F6, 
+        #E49BA6
+        );
+    overflow-x: scroll;
 }
-
-.map img{
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
+.map{
+    width: 746px;
+    height: 474px;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+.map img{
+    width: 731px;
+    height: 474px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
-.suggestions{
-list-style: none;
-}
 
-.suggestions li{
-    cursor: pointer;
-}
- 
-.suggestions li:hover{
-    background:#F2BED1;
-}
+

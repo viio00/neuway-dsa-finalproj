@@ -42,8 +42,8 @@ function showImage(key){
         displayImage.style.display = "block";
     }
 }
-//Event Listener of submit button
-document.getElementById("submit").addEventListener("click", async () => {
+//Event Listener of findPath button
+document.getElementById("findPath").addEventListener("click", async () => {
 
     const location = document.getElementById("searchLocation").value;
     const destination = document.getElementById("searchDestination").value;
@@ -63,12 +63,12 @@ if (!location || !destination){
     });
 
         const data = await response.json();
-
+        //Image
         showImage(data.result);
-
+        //Distance
         document.getElementById("distance").textContent = data.distance || "XX m";
-    
-        document.getElementById("routes").textContent = data.routes || "Other routes";
+        //Other Routes
+        document.getElementById("otherRoutes").textContent = data.routes || "Other routes";
 
     } catch (err) {
         console.error("Error fetching path:", err);

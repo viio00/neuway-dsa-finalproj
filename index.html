@@ -8,31 +8,40 @@
 </head>
 <body>
     <div class="map-area">
+        <div id="titlebar">
+            <p class="title">NEU map</p>
+            <div class="btn" >
+                <img id="minimize" src="min.png" alt="Minimize" onclick="min()">
+                <img  id="close" src="quit.png" alt="Close" onclick="quit()">
+            </div>
+        </div>
         <div class="map">
-            <img id="displayImage" style="display: no;">
+            <img id="displayImage">
         </div>
         <div class="sidebar">
             
             <div class="search-location">
                 <label for="Location">Location</label><br>
                 <input type="text" id="searchLocation" placeholder="Search location here...">
-                <div id="suggestionsLocation" class="suggestions"></div>
                 </div>
                 
             <div class="search-destination">
                 <label for="Destination">Destination</label><br>
                 <input type="text" id="searchDestination" placeholder="Search destination here...">
-                <div id="suggestionsDestination" class="suggestions"></div>
             </div>
             <div class="findPath">
-                <button type="submit" id="findPath">Find Path</button>
+                <button type="submit" id="findPath" style="font-family: 'Pixelify Sans';">Find Path</button>
             </div>
-
+            
             <div class="distance">
+                <label for="distance">Distance</label><br>
                 <p id="distance">XX m</p>
             </div>
 
-            <div class="routes" id="routes">Other routes</div>
+            <div class="routes" id="routes">
+                <label for="routes">Other routes</label>
+                <div class="otherRoutes" id="otherRoutes"></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
