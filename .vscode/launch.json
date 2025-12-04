@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "BinarySearchLocation",
+            "request": "launch",
+            "mainClass": "com.dsaa.neuway2.BinarySearchLocation",
+            "projectName": "neuway2"
+        },
+        {
+            "type": "java",
+            "name": "MainDijkstrasAlgo",
+            "request": "launch",
+            "mainClass": "com.dsaa.neuway2.MainDijkstrasAlgo",
+            "projectName": "neuway2"
+        },
+        {
+            "name": "Attach to Port",
+            "type": "jdk",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "8000"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Neuway2Application",
+            "request": "launch",
+            "mainClass": "com.dsaa.neuway2.Neuway2Application",
+            "projectName": "neuway2"
+        }
+    ]
+}

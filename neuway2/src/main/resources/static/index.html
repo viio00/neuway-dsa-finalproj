@@ -8,9 +8,10 @@
 
     <input type="text" id="start" placeholder="Start node">
     <input type="text" id="destination" placeholder="Destination node">
-    <button onclick="computePath()">Find Path</button>
+    <button onclick="computePath(); getAllPaths()">Find Path</button>
 
     <pre id="result"></pre>
+    <pre id="result2"></pre>
 
     <script>
         async function computePath() {
@@ -24,8 +25,28 @@
             });
 
             const data = await response.json();
-            document.getElementById('result').textContent = 
-                `Path: ${data.path}\nTotal Distance: ${data.totalDistance} meters\nOperations: ${data.operations}`;
+            document.getElementById('result').textContent =
+                `Path: ${data.path}\nTotal Distance: ${data.totalDistance} meters`;
+        }
+
+        async function getAllPaths() {
+            const start = document.getElementById('start').value;
+            const destination = document.getElementById('destination').value;
+
+            const response = await fetch('/dijkstra/all-paths', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ start, destination })
+            });
+
+            const data = await response.json();
+            let out = "Other Routes: \n";
+            
+            data.forEach((route, i) => {
+                out += `${i + 1}. ${route.path} | ${route.distance} meters\n`;
+            });
+
+            document.getElementById('result2').textContent = out;
         }
     </script>
 </body>

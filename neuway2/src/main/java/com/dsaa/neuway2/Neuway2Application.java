@@ -8,5 +8,6 @@ public class Neuway2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Neuway2Application.class, args);
+        System.out.println("http://localhost:8080/");
     }
 }
