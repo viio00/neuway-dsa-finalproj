@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class AllPathsDFS {
-    // Map graph -- neuMap (adjacency List)
+    //Map graph -- neuMap (adjacency List)
     public static class PathResult {
         public String path;
         public int distance;
@@ -18,7 +18,7 @@ public class AllPathsDFS {
         }
     }
 
-    // ✅ CONTROLLER-FRIENDLY METHOD
+    //CONTROLLER-FRIENDLY METHOD
     public static List<PathResult> getAllPaths(
             Map<String, List<MainDijkstrasAlgo.Edge>> graph,
             String start,
@@ -29,6 +29,7 @@ public class AllPathsDFS {
         List<String> path = new ArrayList<>();
 
         dfsAllPaths(graph, start, destination, visited, path, 0, results);
+        insertionSortByDistance(results);
         return results;
     }
 
@@ -56,9 +57,25 @@ public class AllPathsDFS {
             }
         }
     }
- 
+
     // BACKTRACK 
     visited.remove(current);
     path.remove(path.size() - 1);
+    }
+
+    //Insertion Sort (distance)
+    static void insertionSortByDistance(List<PathResult> list) {
+        for (int i = 1; i < list.size(); i++) {
+            PathResult key = list.get(i);
+            int j = i - 1;
+
+            // Move elements greater than key.distance one step ahead
+            while (j >= 0 && list.get(j).distance > key.distance) {
+                list.set(j + 1, list.get(j));
+                j--;
+            }
+
+            list.set(j + 1, key);
+        }  
     }
 }

@@ -78,7 +78,7 @@
 
 #distance{
     font-size: 40px;
-    
+    font-family: 'Pixelify Sans';
 }
 
 .routes{
@@ -87,7 +87,7 @@
     padding-left: 12px;
 }
 
-.otherRoutes{
+#otherRoutes{
     width: 159px;
     height: 194px;
     background-color: #FFFFFF;

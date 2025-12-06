@@ -1,17 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dijkstra Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Dijkstra Path Finder</h1>
+    <div class="map-area">
+        <div id="titlebar">
+            <p class="title">NEU map</p>
+            <div class="btn">
+                <img id="minimize" src="Objects/min.png" alt="Minimize" onclick="min()">
+                <img  id="close" src="Objects/quit.png" alt="Close" onclick="quit()">
+            </div>
+        </div>
+        <div class="map">
+            <img id="displayImage" src="Objects/NEU.png">
+        </div>
 
-    <input type="text" id="start" placeholder="Start node">
-    <input type="text" id="destination" placeholder="Destination node">
-    <button onclick="computePath(); getAllPaths()">Find Path</button>
+        <div class="sidebar">
+            <div class="search-location">
+                <label for="Location">Location</label><br>
+                <input type="text" id="start" placeholder="Current location">
+                </div>
+            <div class="search-destination">
+                <label for="Destination">Destination</label><br>
+                <input type="text" id="destination" placeholder="Destination">
+            </div>
+            <div class="findPath">
+                <button type="submit" id="findPath" style="font-family: 'Pixelify Sans';" onclick="computePath(); getAllPaths(); handleFindPath() ">Find Path</button>
+            </div>
+            
+            <div class="distance">
+                <label for="distance">Distance</label><br>
+                <pre id="distance">XX m</pre>
+            </div>
 
-    <pre id="result"></pre>
-    <pre id="result2"></pre>
+            <div class="routes" id="routes">
+                <label for="routes">Other routes</label>
+                <div id="otherRoutes">
+                    <pre id="result2"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         async function computePath() {
@@ -25,8 +58,8 @@
             });
 
             const data = await response.json();
-            document.getElementById('result').textContent =
-                `Path: ${data.path}\nTotal Distance: ${data.totalDistance} meters`;
+            const distanceDiv = document.getElementById('distance');
+            distanceDiv.innerHTML = `${data.totalDistance} <span style="font-size: 14px;"> meters</span>`;
         }
 
         async function getAllPaths() {
@@ -40,7 +73,7 @@
             });
 
             const data = await response.json();
-            let out = "Other Routes: \n";
+            let out = "";
             
             data.forEach((route, i) => {
                 out += `${i + 1}. ${route.path} | ${route.distance} meters\n`;
@@ -49,5 +82,7 @@
             document.getElementById('result2').textContent = out;
         }
     </script>
+
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 

@@ -61,4 +61,10 @@ public class DijkstraController {
                 request.getDestination().toUpperCase()
         );
     }
+
+    @GetMapping("/neumap")
+    public Map<String, List<MainDijkstrasAlgo.Edge>> getNeuMap() {
+    return neuMap;
+}
+
 }
