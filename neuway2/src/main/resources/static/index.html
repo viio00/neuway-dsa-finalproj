@@ -22,11 +22,13 @@
         <div class="sidebar">
             <div class="search-location">
                 <label for="Location">Location</label><br>
-                <input type="text" id="start" placeholder="Current location">
+                <input type="text" id="start" placeholder="Current location" onkeyup="fetchSuggestion(this)">
+                <ul id="suggestions-start" style="list-style-type: none;"></ul>
                 </div>
             <div class="search-destination">
-                <label for="Destination">Destination</label><br>
-                <input type="text" id="destination" placeholder="Destination">
+                <label for="Destination" style="list-style-type: none;">Destination</label><br>
+                <input type="text" id="destination" placeholder="Destination" onkeyup="fetchSuggestion(this)">
+                <ul id="suggestions-destination"  style="list-style-type: none;"></ul>
             </div>
             <div class="findPath">
                 <button type="submit" id="findPath" style="font-family: 'Pixelify Sans';" onclick="computePath(); getAllPaths(); handleFindPath() ">Find Path</button>

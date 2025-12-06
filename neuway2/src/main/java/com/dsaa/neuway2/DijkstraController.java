@@ -62,9 +62,16 @@ public class DijkstraController {
         );
     }
 
-    @GetMapping("/neumap")
-    public Map<String, List<MainDijkstrasAlgo.Edge>> getNeuMap() {
-    return neuMap;
+    public List<String> options = Arrays.asList("GATE", "IS BLG", "LIBRARY", "MAIN BLG", "PSB", "SECRET GARDEN","SOM");
+
+    @PostMapping("/search")
+    public List<String> searchPost(@RequestBody Map<String, String> body) {
+    String prefix = body.getOrDefault("prefix", "");
+    if (prefix.isEmpty()) return Collections.emptyList();
+    Collections.sort(options);
+    return BinarySearchLocation.binarySearch(options, prefix);
 }
 
+
 }
+

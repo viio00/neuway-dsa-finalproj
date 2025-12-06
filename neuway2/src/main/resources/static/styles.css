@@ -111,4 +111,29 @@
 }
 
 
+#suggestions-start, #suggestions-destination {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #000000;
+    max-height: 120px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    position: absolute;
+    width: 159px; /* match input width */
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+#suggestions-start il, #suggestions-destination il {
+padding: 5px 10px;
+cursor: pointer;
+}
 
+#suggestions-start  li:hover , #suggestions-destination li:hover {
+background-color: #eee;
+}
+.search-location, .search-destination {
+    position: relative; 
+}
+.sidebar {
+    overflow: visible;
+}

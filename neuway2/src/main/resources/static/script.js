@@ -60,6 +60,7 @@ const displayImageList = {
     "SOMPSB": "Objects/PSBSOM.png",
 };
 
+
 function showRouteImage(start, destination) {
     const clean = s => s.toUpperCase().replace(/[^A-Z0-9]/g, "");
     const key = clean(start) + clean(destination);
@@ -75,64 +76,61 @@ function showRouteImage(start, destination) {
     }
 }
 
-//Function for showing images
-function showImage(key){
-    displayImage.style.display = "none";
+async function fetchSuggestion(inputElement) {
+    const value = inputElement.value.trim();
+    const listId = inputElement.id === "start" ? "suggestions-start" : "suggestions-destination";
+    const list = document.getElementById(listId);
+    list.innerHTML = "";
 
-    if (displayImageList[key]){
-        displayImage.src = displayImageList[key];
-        displayImage.style.display = "block";
-    } else {
-        displayImage.src = "Objects/NEU.png";
-        displayImage.style.display = "block";
+    if (value.length === 0) return;
+
+    try {
+        const response = await fetch("/dijkstra/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prefix: value })
+        });
+
+        const items = await response.json();
+
+        items.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+
+            li.onclick = () => {
+                inputElement.value = item;
+                list.innerHTML = ""; // hide suggestions
+            };
+
+            list.appendChild(li);
+        });
+    } catch (err) {
+        console.error("Error fetching suggestions:", err);
     }
 }
-function handleFindPath() {
+
+async function handleFindPath() {
     const start = document.getElementById("start").value;
     const destination = document.getElementById("destination").value;
-    computePath();
-    getAllPaths();
-    showRouteImage(start, destination);
+
+    if (!start || !destination) {
+        alert("Please enter both start and destination.");
+        return;
+    }
+
+    try {
+        const response = await fetch('/dijkstra', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ start, destination })
+        });
+        const data = await response.json();
+        console.log("Path result:", data);
+        // Here you can update your distance, other routes, and image
+    } catch (err) {
+        console.error("Error computing path:", err);
+    }
 }
-
-//for backend (distace & other routes)
-async function computePath() {
-    const start = document.getElementById('start').value;
-    const destination = document.getElementById('destination').value;
-
-    makeKey(startInput, destinationInput)
-
-    const response = await fetch('/dijkstra', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ start, destination })
-    });
-
-    const data = await response.json();
-    const distanceDiv = document.getElementById('distance');        
-    distanceDiv.innerHTML = `${data.totalDistance} <span style="font-size: 14px;"> meters</span>`;
-}
-
- async function getAllPaths() {
-    const start = document.getElementById('start').value;
-    const destination = document.getElementById('destination').value;
-
-    const response = await fetch('/dijkstra/all-paths', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ start, destination })
-    });
-
-    const data = await response.json();
-    let out = "";
-            
-    data.forEach((route, i) => {
-        out += `${i + 1}. ${route.path} | ${route.distance} meters\n`;
-    });
-
-    document.getElementById('result2').textContent = out;
-}
-
 
 //Event Listener of findPath button
 document.getElementById("findPath").addEventListener("click", async () => {
@@ -166,4 +164,45 @@ if (!location || !destination){
         console.error("Error fetching path:", err);
         alert("Failed to find path. Please try again.");
     }
+
 });
+
+async function fetchSuggestion(inputElement) {
+    const value = inputElement.value.trim();
+
+    // Pick correct <ul>
+    const listId = inputElement.id === "start"
+        ? "suggestions-start"
+        : "suggestions-destination";
+
+    const list = document.getElementById(listId);
+    list.innerHTML = "";
+
+    // Stop if empty
+    if (value.length === 0) return;
+
+    try {
+        const response = await fetch("/dijkstra/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prefix: value })
+        });
+
+        const items = await response.json();
+
+        items.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+
+            li.onclick = () => {
+                inputElement.value = item;
+                list.innerHTML = ""; // hide suggestions
+            };
+
+            list.appendChild(li);
+        });
+    } catch (err) {
+        console.error("Error fetching suggestions:", err);
+    }
+}
+
