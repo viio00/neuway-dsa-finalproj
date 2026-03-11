@@ -10,5 +10,4 @@ NEUWay is a Google Maps-like program, guiding users to easily navigate the campu
 - _(Insertion) Sorting Algorithm_: Sorts the directions by distance
 - _Binary Search_: Lookup for directions
   
-GUI: HTML, CSS, JS, Springboot
 
